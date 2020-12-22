@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+//route untuk menampilkan halaman awal
+// Route::get('/', 'DashboardController@index');
+
+
+
+//ROute di dalam sini hanya bisa diakses ketika sudah login
+Route::group(['middleware' => ['auth']], function () {
+    //route untuk menampilkan halaman awal
+    Route::get('/', 'DashboardController@index');
+    Route::resource('products', 'ProductController');
 });
+Auth::routes(["register" => false]);
+Route::get('logout', 'Auth\LoginController@logout')->name('logout.nih');
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
