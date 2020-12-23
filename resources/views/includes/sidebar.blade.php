@@ -15,12 +15,12 @@
                 <a href="{{ route('products.create') }}"> <i class="menu-icon fa fa-plus"></i>Tambah Produk</a>
             </li>
 
-            <li class="menu-title">Foto Barang</li><!-- /.menu-title -->
+            <li class="menu-title">Foto Produk</li><!-- /.menu-title -->
             <li class="">
-                <a href="#"> <i class="menu-icon fa fa-list"></i>Lihat Foto Barang</a>
+                <a href="{{ route('product-gallery.index') }}"> <i class="menu-icon fa fa-list"></i>Lihat Foto Produk</a>
             </li>
             <li class="">
-                <a href="#"> <i class="menu-icon fa fa-plus"></i>Tambah Foto Barang</a>
+                <a href="{{ route('product-gallery.create') }}"> <i class="menu-icon fa fa-plus"></i>Tambah Foto Produk</a>
             </li>
 
             <li class="menu-title">Transaksi</li><!-- /.menu-title -->

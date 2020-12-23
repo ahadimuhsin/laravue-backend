@@ -22,7 +22,9 @@
     <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
     <script src="{{ asset('assets/js/init/fullcalendar-init.js') }}"></script>
-    <!--Local Stuff-->
+    <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>    <!--Local Stuff-->
     <script>
         jQuery(document).ready(function($) {
             "use strict";
@@ -213,4 +215,16 @@
             });
             // Bar Chart #flotBarChart End
         });
+
+        //toastr notification
+        //message with toastr
+  @if(session()->has('success'))
+
+     toastr.success('{{ session('success') }}', 'BERHASIL!');
+
+  @elseif(session()->has('error'))
+
+     toastr.error('{{ session('error') }}', 'GAGAL!');
+
+  @endif
     </script>

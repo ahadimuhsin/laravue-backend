@@ -48,11 +48,11 @@ class ProductController extends Controller
 
         if($product){
             return redirect()->route('products.index')
-            ->with('success', 'Data berhasil disimpan');
+            ->with('success', 'Data ' . $product->name . ' berhasil disimpan');
         }
         else{
             return redirect()->route('products.index')
-            ->with('error', 'Data berhasil disimpan');
+            ->with('error', 'Data '.$product->name.' gagal disimpan');
         }
     }
 
@@ -76,6 +76,9 @@ class ProductController extends Controller
     public function edit($id)
     {
         //
+        $product = Product::findOrFail($id);
+
+        return view('pages.products.edit', ['product' => $product]);
     }
 
     /**
@@ -85,9 +88,19 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, $id)
     {
         //
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->name);
+
+        $product = Product::findOrFail($id);
+        $product->update($data);
+
+        return redirect()->route('products.index')->with(
+            ['success' => 'Data '.$product->name.' berhasil diubah!']
+        );
+
     }
 
     /**
@@ -99,5 +112,12 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+        $product = Product::findOrFail($id);
+
+        $product->delete();
+
+        return redirect()->route('products.index')->with(
+            ['success' => 'Data berhasil dihapus']
+        );
     }
 }
