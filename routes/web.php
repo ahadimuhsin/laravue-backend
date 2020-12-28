@@ -27,6 +27,8 @@ use Illuminate\Support\Facades\Auth;
 Route::group(['middleware' => ['auth']], function () {
     //route untuk menampilkan halaman awal
     Route::get('/', 'DashboardController@index');
+    Route::get('products/{id}/gallery', 'ProductController@gallery')
+    ->name('products.gallery');
     Route::resource('products', 'ProductController');
     Route::resource('product-gallery', 'ProductGalleryController');
     // Route::get('products/delete/{id}', 'ProductController@destroy')->name('products.destroy');

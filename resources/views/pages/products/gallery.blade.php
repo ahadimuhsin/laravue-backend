@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @section('title')
-Data Produk
+Data Galeri Produk
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@ Data Produk
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="box-title">Daftar Produk</h4>
+                    <h4 class="box-title">Daftar Galeri Produk <small>{{ $product->name }}</small></h4>
                 </div>
                 <div class="card-body--">
                     <div class="table-stats order-table ov-h">
@@ -17,29 +17,27 @@ Data Produk
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
+                                    <th>Nama Produk</th>
+                                    <th>Foto</th>
+                                    <th>Default</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse($products as $product)
+                                @forelse($items as $item)
+                                @php $i = 1; @endphp
                                 <tr>
-                                    <td>{{ $product->id }}</td>
-                                    <td>{{ $product->name }}</td>
-                                    <td>{{ $product->type }}</td>
-                                    <td>{{ $product->price }}</td>
-                                    <td>{{ $product->quantity }}</td>
+                                    <td>{{ $i++ }}</td>
+                                    <td>{{ $item->product->name }}</td>
                                     <td>
-                                        <a href="{{ route('products.gallery', $product->id) }}" class="btn btn-info btn-sm">
-                                            <i class="fa fa-picture-o"></i>
-                                        </a>
-                                        <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary btn-sm">
+                                        <img src="{{ url($item->photo) }}" alt=""/>
+                                    </td>
+                                    <td>{{ $item->is_default ? 'Ya' : 'Tidak'}}</td>
+                                    <td>
+                                        {{-- <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary btn-sm">
                                             <i class="fa fa-pencil"></i>
-                                        </a>
-                                        <form action="{{ route('products.destroy', $product->id) }}" method="post" onsubmit="return confirm('Yakin mau hapus data {{ $product->name }} ?')" class="d-inline">
+                                        </a> --}}
+                                        <form action="{{ route('product-gallery.destroy', $item->id) }}" method="post" onsubmit="return confirm('Yakin mau hapus data {{ $item->product->name }} ?')" class="d-inline">
                                             @csrf
                                             @method('delete')
                                             <button class="btn btn-danger btn-sm destroy" type="submit">
@@ -50,14 +48,14 @@ Data Produk
                                 </tr>
                                 @empty
                                 <tr>
-                                    <td colspan="6" class="text-center p-5">Data Kosong</td>
+                                    <td colspan="5" class="text-center p-5">Data Kosong</td>
                                 </tr>
                                 @endforelse
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <td colspan="10">
-                                        {{ $products->appends(Request::all())->links() }}
+                                        {{ $items->appends(Request::all())->links() }}
                                     </td>
                                 </tr>
                             </tfoot>
