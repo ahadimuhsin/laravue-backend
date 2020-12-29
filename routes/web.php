@@ -32,6 +32,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('products', 'ProductController');
     Route::resource('product-gallery', 'ProductGalleryController');
     // Route::get('products/delete/{id}', 'ProductController@destroy')->name('products.destroy');
+    Route::resource('transactions', 'TransactionController');
 });
 Auth::routes(["register" => false]);
 Route::get('logout', 'Auth\LoginController@logout')->name('logout.nih');

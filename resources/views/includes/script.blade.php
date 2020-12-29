@@ -227,4 +227,34 @@
      toastr.error('{{ session('error') }}', 'GAGAL!');
 
   @endif
-    </script>
+</script>
+
+<script>
+    jQuery(document).ready(function($){
+        $("#showDetail").on('show.bs.modal', function(event){
+            let button = $(event.relatedTarget);
+            let modal = $(this);
+
+            modal.find('.modal-body').load(button.data("remote"));
+            modal.find('.modal-title').html(button.data("title"));
+        })
+    });
+</script>
+
+<div class="modal" id="showDetail" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="model-header">
+                <button class="close" type="button" data-dismiss="modal"
+                aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title mt-3 ml-3">
+                </h5>
+            </div>
+            <div class="modal-body">
+                <i class="fa fa-spinner fa-spin">   </i>
+            </div>
+        </div>
+    </div>
+</div>
