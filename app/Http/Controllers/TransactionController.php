@@ -100,5 +100,30 @@ class TransactionController extends Controller
     public function destroy($id)
     {
         //
+        //
+        $transaction = Transaction::findOrFail($id);
+
+        $transaction->delete();
+
+        return redirect()->route('transactions.index')->with(
+            ['success' => 'Data berhasil dihapus']
+        );
+    }
+
+    public function changeStatus (Request $request, $id)
+    {
+        $this->validate($request, [
+            'status' => 'required|in:PENDING,SUCCESS,FAILED'
+        ]);
+
+        $transaction = Transaction::findOrFail($id);
+
+        $transaction->update([
+            'transaction_status' => $request->status
+        ]);
+
+        return redirect()->route('transactions.index')->with([
+            'success' => 'Status transaksi '.$transaction->uuid.' berhasil diubah'
+        ]);
     }
 }

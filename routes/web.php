@@ -32,6 +32,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('products', 'ProductController');
     Route::resource('product-gallery', 'ProductGalleryController');
     // Route::get('products/delete/{id}', 'ProductController@destroy')->name('products.destroy');
+    Route::get('transactions/{id}/change-status', 'TransactionController@changeStatus')
+    ->name('transactions.status');
     Route::resource('transactions', 'TransactionController');
 });
 Auth::routes(["register" => false]);

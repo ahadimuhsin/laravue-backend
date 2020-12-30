@@ -49,9 +49,9 @@ Tambah Data Produk
         </div>
 
         <div class="form-group">
-            <label for="price" class="form-control-label">Harga Produk</label>
-            <input type="number" name="price"
-            class="form-control @error('price') is-invalid @enderror" value="{{ old('price') }}">
+            <label for="price" class="form-control-label">Harga Produk (Rp)</label>
+            <input type="text" name="price"
+            class="form-control @error('price') is-invalid @enderror" value="{{ old('price') }}" onkeyup="formatRupiah(this, '')">
 
             @error('price')
             <div class="text-muted">

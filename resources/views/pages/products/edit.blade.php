@@ -40,7 +40,7 @@ Edit Data Produk
 
         <div class="form-group">
             <label for="description" class="form-control-label">Deskripsi Produk</label>
-            <textarea name="description"  class="ckeditor form-control @error('description') is-invalid @enderror"
+            <textarea name="description" class="ckeditor form-control @error('description') is-invalid @enderror"
             rows="10">{{ old('description') ? old('description') : $product->description}}</textarea>
 
             @error('description')
@@ -52,7 +52,7 @@ Edit Data Produk
 
         <div class="form-group">
             <label for="price" class="form-control-label">Harga Produk</label>
-            <input type="number" name="price"
+            <input type="text" name="price" onkeyup="formatRupiah(this, '')"
             class="form-control @error('price') is-invalid @enderror" value="{{ old('price') ? old('price') : $product->price }}">
 
             @error('price')

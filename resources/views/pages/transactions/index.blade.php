@@ -35,7 +35,7 @@ Data Transaksi
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->number }}</td>
                                     <td>{!!$item->address !!}</td>
-                                    <td>{{ $item->transaction_total }}</td>
+                                    <td>{{ formatRupiah($item->transaction_total) }}</td>
                                     <td>
                                         @if( $item->transaction_status == 'PENDING')
                                             <span class="badge badge-info">
@@ -52,12 +52,14 @@ Data Transaksi
                                     </td>
                                     <td>
                                         @if($item->transaction_status == 'PENDING')
-                                            {{-- <a href="{{ route('transactions.status', $item->id) }} ? status=SUCCESS" class="btn btn-success btn-sm">
+                                            <a href="{{ route('transactions.status', $item->id) }}?status=SUCCESS" class="btn btn-success btn-sm"
+                                                title="Success">
                                                 <i class="fa fa-check"></i>
                                             </a>
-                                            <a href="{{ route('transactions.status', $item->id) }} ? status=FAILED" class="btn btn-warning btn-sm">
-                                                <i class="fa fa-check"></i>
-                                            </a> --}}
+                                            <a href="{{ route('transactions.status', $item->id) }}?status=FAILED" class="btn btn-warning btn-sm"
+                                                title="Failed">
+                                                <i class="fa fa-times"></i>
+                                            </a>
                                         @endif
                                         <a
                                         href="#showDetail"

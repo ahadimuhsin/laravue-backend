@@ -30,7 +30,7 @@ Data Produk
                                     <td>{{ $product->id }}</td>
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->type }}</td>
-                                    <td>{{ $product->price }}</td>
+                                    <td>{{ formatRupiah($product->price) }}</td>
                                     <td>{{ $product->quantity }}</td>
                                     <td>
                                         <a href="{{ route('products.gallery', $product->id) }}" class="btn btn-info btn-sm">

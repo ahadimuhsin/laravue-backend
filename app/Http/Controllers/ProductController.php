@@ -44,6 +44,7 @@ class ProductController extends Controller
         //
         $data = $request->all();
         $data['slug'] = Str::slug($request->name);
+        $data['price'] = preg_replace('/(?:[.]|\,00)/', '$1', $request->input('price'));
 
         $product = Product::create($data);
 
@@ -94,6 +95,7 @@ class ProductController extends Controller
         //
         $data = $request->all();
         $data['slug'] = Str::slug($request->name);
+        $data['price'] = preg_replace('/(?:[.]|\,00)/', '$1', $request->input('price'));
 
         $product = Product::findOrFail($id);
         $product->update($data);

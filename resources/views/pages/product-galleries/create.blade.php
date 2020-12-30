@@ -14,12 +14,11 @@ Tambah Galeri Produk
 
         <div class="form-group">
             <label for="name" class="form-control-label">Nama Produk</label>
-            {{-- <input type="text" name="name"
-            class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
-             --}}
              <select name="product_id" class="form-control @error('product_id') is-invalid @enderror">
                  @foreach($products as $product)
-                 <option value="{{ old('product_id') ? old('product_id') : $product->id }}">{{ $product->name }}</option>
+                 <option value="{{ old('product_id') ? old('product_id') : $product->id }}">
+                    {{ $product->name }}
+                </option>
                  @endforeach
              </select>
 
@@ -44,17 +43,17 @@ Tambah Galeri Produk
 
         <div class="form-group">
             <label for="is_default" class="form-control-label">Default Foto Produk</label>
-            <br>
-            <label>
-                <input type="checkbox" name="is_default"
-            class="form-control @error('is_default') is-invalid @enderror" value="1">Ya
-            </label>
-            &nbsp;
-            <label>
-                <input type="checkbox" name="is_default"
-            class="form-control @error('is_default') is-invalid @enderror" value="0">Tidak
-            </label>
+            <div>
+            <label for="yes">
+            <input type="checkbox" name="is_default" id="yes"
+            class="form-control @error('is_default') is-invalid @enderror" value="1" onclick="onlyOne(this)">
+            Ya</label>
 
+            <label for="no">
+            <input type="checkbox" name="is_default" id="no"
+            class="form-control @error('is_default') is-invalid @enderror" value="0" onclick="onlyOne(this)">
+            Tidak</label>
+            </div>
             @error('is_default')
             <div class="text-muted">
                 {{ $message }}

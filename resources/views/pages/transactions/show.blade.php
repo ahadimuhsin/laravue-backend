@@ -69,10 +69,11 @@ class="table table-bordered">
 </tr>
 </table>
 
-{{-- <div class="row">
+<div class="row">
     <div class="col-4">
+        {{-- mengubah status transaksi dengan mengirimkan parameter status --}}
         <a href="{{ route('transactions.status', $item->id) }}?status=SUCCESS"
-            class="btn btn-succes btn-block">
+            class="btn btn-success btn-block">
             <i class="fa fa-check"></i>Set Sukses
         </a>
     </div>
@@ -84,8 +85,8 @@ class="table table-bordered">
     </div>
     <div class="col-4">
         <a href="{{ route('transactions.status', $item->id) }}?status=PENDING"
-            class="btn btn-warning btn-block">
+            class="btn btn-info btn-block">
             <i class="fa fa-spinner"></i>Set Pending
         </a>
     </div>
-</div> --}}
+</div>
