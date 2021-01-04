@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('products', 'ProductController@all');
+Route::post('checkout', 'CheckoutController@checkout');
+Route::get('transaction/{id}', 'TransactionController@get_data');

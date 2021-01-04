@@ -36,7 +36,7 @@ Data Galeri Produk
                                     <td>
                                         {{-- <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary btn-sm">
                                             <i class="fa fa-pencil"></i>
-                                        </a> --}}web
+                                        </a> --}}
                                         <form action="{{ route('product-gallery.destroy', $item->id) }}" method="post" onsubmit="return confirm('Yakin mau hapus data {{ $item->product->name }} ?')" class="d-inline">
                                             @csrf
                                             @method('delete')
