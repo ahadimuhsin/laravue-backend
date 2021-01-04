@@ -27,7 +27,7 @@ Data Galeri Produk
                                 @forelse($items as $item)
                                 @php $i = 1; @endphp
                                 <tr>
-                                    <td>{{ $i++ }}</td>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->product->name }}</td>
                                     <td>
                                         <img src="{{ url($item->photo) }}" alt=""/>

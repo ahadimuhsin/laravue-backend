@@ -27,7 +27,7 @@ Data Produk
                             <tbody>
                                 @forelse($products as $product)
                                 <tr>
-                                    <td>{{ $product->id }}</td>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->type }}</td>
                                     <td>{{ formatRupiah($product->price) }}</td>
